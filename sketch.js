@@ -1,12 +1,15 @@
 
 const circleSize = 10;
-const curveColor = "DarkOrchid";
-const defaultColor = "FloralWhite";
+const curveColor = "SkyBlue";
+const defaultColor = "SteelBlue";
+
+/* options */
+let debugCheckbox;
+let timeSlider;
 
 let points = [];
-
-let timeSlider;
-let dragging;
+let debugMode = false;
+let draggingPoint;
 
 function setup() {
 
@@ -15,6 +18,8 @@ function setup() {
   points.push(new Point(350, 200, circleSize)); /* end */
 
   timeSlider = createSlider(0, 1, 0.5, 0.01);
+  debugCheckbox = createCheckbox("Debug", false);
+  debugCheckbox.changed(() => debugMode = debugCheckbox.checked());
 
   createCanvas(400, 400);
 }
@@ -22,10 +27,11 @@ function setup() {
 function draw() {
   background(0);
 
-  let time = timeSlider.value();
+  if(debugMode) {
+    debugSection(timeSlider.value());
+  }
 
-  debugLines(time);
-  drawBezier(time);
+  drawBezier(timeSlider.value());
 
   noStroke();
   fill(defaultColor);
@@ -48,7 +54,8 @@ function drawBezier(time){
   endShape();
 }
 
-function debugLines(time){
+function debugSection(time){
+
   stroke(defaultColor);
   strokeWeight(2);
   line(points[0].x, points[0].y, points[1].x, points[1].y);
@@ -69,21 +76,21 @@ function debugLines(time){
 }
 
 function mouseDragged(){
-  if(dragging != null){
-    dragging.x = mouseX;
-    dragging.y = mouseY;
+  if(draggingPoint != null){
+    draggingPoint.x = mouseX;
+    draggingPoint.y = mouseY;
     return;
   }
   for(let i = 0; i < points.length; i++){
     if(points[i].isOver(mouseX, mouseY)){
-      dragging = points[i];
+      draggingPoint = points[i];
       break;
     }
   }
 }
 
 function mouseReleased(){
-  dragging = null;
+  draggingPoint = null;
 }
 
 class Point {
