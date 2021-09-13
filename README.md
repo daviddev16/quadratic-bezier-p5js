@@ -1,6 +1,7 @@
 # Quadratic Bezier Curve using p5.js
 
 The Bézier curve is a polynomial curve expressed as the linear interpolation between some representative points, called control points.
+
 Used reference: https://en.wikipedia.org/wiki/Bézier_curve#Quadratic_Bézier_curves
 
 # Examples
