@@ -21,7 +21,7 @@ function setup() {
   debugCheckbox = createCheckbox("Debug", false);
   debugCheckbox.changed(() => debugMode = debugCheckbox.checked());
 
-  createCanvas(400, 400);
+  createCanvas(600, 600);
 }
 
 function draw() {
@@ -30,12 +30,10 @@ function draw() {
   if(debugMode) {
     debugSection(timeSlider.value());
   }
-
   drawBezier(timeSlider.value());
 
   noStroke();
   fill(defaultColor);
-
   for(let i = 0; i < points.length; i++){
     circle(points[i].x, points[i].y, points[i].radius);
   }
@@ -55,7 +53,6 @@ function drawBezier(time){
 }
 
 function debugSection(time){
-
   stroke(defaultColor);
   strokeWeight(2);
   line(points[0].x, points[0].y, points[1].x, points[1].y);
@@ -65,7 +62,6 @@ function debugSection(time){
           lerp(points[1].x, points[2].x, time), lerp(points[1].y, points[2].y, time));
 
   noStroke();
-
   fill(defaultColor);
   circle(lerp(points[0].x, points[1].x, time),lerp(points[0].y, points[1].y, time), circleSize/2);
   circle(lerp(points[1].x, points[2].x, time),lerp(points[1].y, points[2].y, time), circleSize/2);
@@ -76,15 +72,17 @@ function debugSection(time){
 }
 
 function mouseDragged(){
-  if(draggingPoint != null){
-    draggingPoint.x = mouseX;
-    draggingPoint.y = mouseY;
-    return;
-  }
-  for(let i = 0; i < points.length; i++){
-    if(points[i].isOver(mouseX, mouseY)){
-      draggingPoint = points[i];
-      break;
+  if(mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height){
+    if(draggingPoint != null){
+      draggingPoint.x = mouseX;
+      draggingPoint.y = mouseY;
+      return;
+    }
+    for(let i = 0; i < points.length; i++){
+      if(points[i].isOver(mouseX, mouseY)){
+        draggingPoint = points[i];
+        break;
+      }
     }
   }
 }
