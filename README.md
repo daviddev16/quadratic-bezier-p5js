@@ -6,8 +6,8 @@ Used reference: https://en.wikipedia.org/wiki/Bézier_curve#Quadratic_Bézier_cu
 # Examples
 
 <p align="center">
-<img width="300" height="300" src="https://github.com/daviddev16/quadratic-bezier-p5js/blob/master/examples/example_1.gif">
-<img width="300" height="300" src="https://github.com/daviddev16/quadratic-bezier-p5js/blob/master/examples/example_3.gif"> 
-<img width="300" height="300" src="https://github.com/daviddev16/quadratic-bezier-p5js/blob/master/examples/example_2.gif"> 
+<img width="200" height="200" src="https://github.com/daviddev16/quadratic-bezier-p5js/blob/master/examples/example_1.gif">
+<img width="200" height="200" src="https://github.com/daviddev16/quadratic-bezier-p5js/blob/master/examples/example_3.gif"> 
+<img width="200" height="200" src="https://github.com/daviddev16/quadratic-bezier-p5js/blob/master/examples/example_2.gif"> 
 </p>
 
